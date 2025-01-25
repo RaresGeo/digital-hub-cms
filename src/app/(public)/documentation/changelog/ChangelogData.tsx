@@ -22,6 +22,55 @@ export type ChangelogItemType = {
  */
 const changelogData: ChangelogItemType[] = [
 	{
+		version: '14.0.0',
+		date: '2025-01-26',
+		newChanges: ['🚀 Tailwindcss updated to v4'],
+		notes: (
+			<div className="text-base p-6 border-2 rounded-xl w-full max-w-2xl mt-10 mb-6">
+				<Typography component="div">
+					<ul className="list-disc leading-[2]">
+						<li>
+							This major version upgrades <b>Tailwind CSS to version 4</b>, bringing significant
+							improvements and new features
+						</li>
+						<li>
+							We have adopted Tailwind CSS v4's default spacing and configuration values for better
+							consistency and maintainability
+						</li>
+						<li>
+							<b>
+								<code>tailwindcss.config.js</code>
+							</b>{' '}
+							is no longer in use.
+						</li>
+						<li>
+							The base font size has been updated to 16px to align with modern web standards and improve
+							readability
+						</li>
+
+						<Alert
+							severity="warning"
+							className="mt-2 leading-[2]"
+						>
+							We provide a migration script at <code>src/utils/node-scripts/migrate-tw-classes.js</code>{' '}
+							to help you update your project's Tailwind CSS classes for only this version.
+							<br />
+							Run{' '}
+							<code className="bg-orange-100 text-orange-800 px-1 py-0.5 rounded-md">
+								node src/utils/node-scripts/migrate-tw-classes.js ./src
+							</code>{' '}
+							to update your project's classes.
+							<br />
+							Be careful with this script, it will replace all your Tailwind CSS classes with the new
+							ones.
+						</Alert>
+					</ul>
+				</Typography>
+			</div>
+		)
+	},
+
+	{
 		version: '13.0.0',
 		date: '2024-12-09',
 		newChanges: [
