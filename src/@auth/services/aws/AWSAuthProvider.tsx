@@ -1,14 +1,13 @@
 import { useEffect, useCallback, useImperativeHandle, useState, useMemo } from 'react';
 import { Amplify } from 'aws-amplify';
-import { Authenticator, useAuthenticator } from '@aws-amplify/ui-react';
-import '@aws-amplify/ui-react/styles.css';
-import { fetchUserAttributes } from '@aws-amplify/auth';
 import { User } from '@auth/user';
+import { fetchUserAttributes } from '@aws-amplify/auth';
 import { PartialDeep } from 'type-fest';
 import { FuseAuthProviderComponentProps, FuseAuthProviderState } from '@fuse/core/FuseAuthProvider/types/FuseAuthTypes';
 import { authCreateDbUser, authGetDbUserByEmail, authUpdateDbUser } from '@auth/authApi';
-import awsAuthConfig from './awsAuthConfig';
 import AWSAuthContext, { AWSAuthContextType } from './AWSAuthContext';
+import { Authenticator, useAuthenticator } from '@aws-amplify/ui-react';
+import awsAuthConfig from './awsAuthConfig';
 
 // Configure Amplify
 Amplify.configure(awsAuthConfig);

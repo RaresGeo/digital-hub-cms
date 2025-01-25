@@ -25,17 +25,17 @@ function MockApiDoc() {
 		<Root className="w-full">
 			<Box
 				sx={{ backgroundColor: 'background.default' }}
-				className="flex items-center px-16 sticky top-0 h-64 z-10"
+				className="flex items-center px-4 sticky top-0 h-16 z-10"
 			>
 				<div className="flex flex-1 items-center">
 					<Typography
 						variant="h6"
-						className="font-700"
+						className="font-bold"
 					>
 						Mock API Definitions (OpenAPI 3.0)
 					</Typography>
 				</div>
-				<div className="flex flex-shrink justify-end items-center space-x-4">
+				<div className="flex shrink justify-end items-center space-x-1">
 					<Button
 						className="whitespace-nowrap"
 						component={Link}
@@ -50,7 +50,7 @@ function MockApiDoc() {
 				</div>
 			</Box>
 
-			<div className="sticky top-64 w-full not-prose">
+			<div className="sticky top-16 w-full not-prose">
 				<RedocStandalone
 					spec={mockApiJson as object}
 					options={

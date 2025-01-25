@@ -1,7 +1,5 @@
 import '@i18n/i18n';
-import './styles/app-base.css';
-import './styles/app-components.css';
-import './styles/app-utilities.css';
+import './styles/index.css';
 import { createRoot } from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router';
 import routes from 'src/configs/routesConfig';

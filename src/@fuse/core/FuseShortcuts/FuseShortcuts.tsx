@@ -81,13 +81,13 @@ function FuseShortcuts(props: FuseShortcutsProps) {
 	);
 
 	return (
-		<Box className={clsx('flex flex-shrink overflow-hidden', variant === 'vertical' ? 'flex-col' : '', className)}>
+		<Box className={clsx('flex shrink overflow-hidden', variant === 'vertical' ? 'flex-col' : '', className)}>
 			{useMemo(() => {
 				return (
 					<Box
 						className={clsx(
 							'flex flex-1 items-center border rounded-lg',
-							variant === 'vertical' ? 'flex-col' : 'max-h-36'
+							variant === 'vertical' ? 'flex-col' : 'max-h-9'
 						)}
 					>
 						{shortcutItems.map(
@@ -102,7 +102,7 @@ function FuseShortcuts(props: FuseShortcutsProps) {
 											title={_item.title}
 											placement={variant === 'horizontal' ? 'bottom' : 'left'}
 										>
-											<IconButton className="h-36 w-36 p-0 rounded-0">
+											<IconButton className="h-9 w-9 p-0 rounded-none">
 												{_item.icon ? (
 													<FuseSvgIcon size={20}>{_item.icon}</FuseSvgIcon>
 												) : (
@@ -121,7 +121,7 @@ function FuseShortcuts(props: FuseShortcutsProps) {
 							placement={variant === 'horizontal' ? 'bottom' : 'left'}
 						>
 							<IconButton
-								className="h-36 w-36 p-0 rounded-0"
+								className="h-9 w-9 p-0 rounded-none"
 								aria-haspopup="true"
 								onClick={addMenuClick}
 							>
@@ -143,7 +143,7 @@ function FuseShortcuts(props: FuseShortcutsProps) {
 				open={Boolean(addMenu)}
 				onClose={addMenuClose}
 				classes={{
-					paper: 'min-w-256'
+					paper: 'min-w-64'
 				}}
 				TransitionProps={{
 					onEntered: () => {
@@ -154,7 +154,7 @@ function FuseShortcuts(props: FuseShortcutsProps) {
 					}
 				}}
 			>
-				<div className="p-16 pt-8">
+				<div className="p-4 pt-2">
 					<Input
 						inputRef={searchInputRef}
 						value={searchText}
@@ -188,7 +188,7 @@ function FuseShortcuts(props: FuseShortcutsProps) {
 				{searchText.length !== 0 && searchResults.length === 0 && (
 					<Typography
 						color="text.secondary"
-						className="p-16 pb-8"
+						className="p-4 pb-2"
 					>
 						No results..
 					</Typography>
@@ -233,7 +233,7 @@ function ShortcutMenuItem(props: {
 			role="button"
 		>
 			<MenuItem key={item.id}>
-				<ListItemIcon className="min-w-36">
+				<ListItemIcon className="min-w-9">
 					{item.icon ? (
 						<FuseSvgIcon>{item.icon}</FuseSvgIcon>
 					) : (

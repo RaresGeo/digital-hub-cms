@@ -89,13 +89,13 @@ function PlanBillingTab() {
 	}
 
 	return (
-		<div className="w-full max-w-3xl">
+		<div className="w-full max-w-5xl">
 			<form onSubmit={handleSubmit(onSubmit)}>
 				<div className="w-full">
 					<Typography className="text-xl">Change your plan</Typography>
 					<Typography color="text.secondary">Upgrade or downgrade your current plan.</Typography>
 				</div>
-				<div className="mt-32 grid w-full gap-16 sm:grid-cols-3">
+				<div className="mt-8 grid w-full gap-4 sm:grid-cols-3">
 					<div className="sm:col-span-3">
 						<Alert severity="info">
 							Changing the plan will take effect immediately. You will be charged for the rest of the
@@ -115,7 +115,7 @@ function PlanBillingTab() {
 											}
 										})}
 										className={clsx(
-											' flex flex-1 cursor-pointer flex-col items-start justify-start rounded-md p-24 border-3 border-transparent relative',
+											' flex flex-1 cursor-pointer flex-col items-start justify-start rounded-md p-6 border-3 border-transparent relative',
 											field.value === plan.value ? 'selected' : ''
 										)}
 										onClick={() => field.onChange(plan.value)}
@@ -123,7 +123,7 @@ function PlanBillingTab() {
 									>
 										{field.value === plan.value && (
 											<FuseSvgIcon
-												className="absolute right-0 top-0 mr-12 mt-12"
+												className="absolute right-0 top-0 mr-3 mt-3"
 												size={24}
 												color="secondary"
 											>
@@ -132,13 +132,13 @@ function PlanBillingTab() {
 										)}
 										<Typography className="font-semibold uppercase">{plan.label}</Typography>
 										<Typography
-											className="mt-4"
+											className="mt-1"
 											color="text.secondary"
 										>
 											{plan.details}
 										</Typography>
 										<div className="flex-auto" />
-										<div className="flex items-end mt-8 text-lg">
+										<div className="flex items-end mt-2 text-lg">
 											<Typography>
 												{plan.price.toLocaleString('en-US', {
 													style: 'currency',
@@ -154,7 +154,7 @@ function PlanBillingTab() {
 					/>
 				</div>
 
-				<div className="mb-40 mt-48 border-t" />
+				<div className="mb-10 mt-12 border-t" />
 				<div className="w-full">
 					<Typography className="text-xl">Payment Details</Typography>
 					<Typography color="text.secondary">
@@ -162,7 +162,7 @@ function PlanBillingTab() {
 						your tax rates.
 					</Typography>
 				</div>
-				<div className="mt-32 grid w-full grid-cols-4 gap-24">
+				<div className="mt-8 grid w-full grid-cols-4 gap-6">
 					<div className="col-span-4">
 						<Controller
 							control={control}
@@ -315,8 +315,8 @@ function PlanBillingTab() {
 					</div>
 				</div>
 
-				<Divider className="mb-40 mt-44 border-t" />
-				<div className="flex items-center justify-end space-x-8">
+				<Divider className="mb-10 mt-11 border-t" />
+				<div className="flex items-center justify-end space-x-2">
 					<Button
 						variant="outlined"
 						disabled={_.isEmpty(dirtyFields)}

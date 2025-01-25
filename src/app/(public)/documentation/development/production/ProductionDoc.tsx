@@ -10,13 +10,13 @@ function ProductionDoc() {
 		<>
 			<Typography
 				variant="h4"
-				className="mb-40 font-700"
+				className="mb-10 font-bold"
 			>
 				Production
 			</Typography>
 
 			<Typography
-				className="mb-16"
+				className="mb-4"
 				component="p"
 			>
 				The following command builds the application into an output directory
@@ -24,13 +24,13 @@ function ProductionDoc() {
 
 			<FuseHighlight
 				component="pre"
-				className="language-bash my-16"
+				className="language-bash my-4"
 			>
 				{` npm run build `}
 			</FuseHighlight>
 
 			<Typography
-				className="mb-16"
+				className="mb-4"
 				component="p"
 			>
 				compiles the application into <code>/build</code> directory

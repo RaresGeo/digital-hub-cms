@@ -10,24 +10,24 @@ function TsFileRenamingMigrationDoc() {
 		<>
 			<Typography
 				variant="h4"
-				className="mb-16 font-700"
+				className="mb-4 font-bold"
 			>
 				Typescript migration:
 			</Typography>
 			<Typography
 				variant="h5"
-				className="mb-40 font-700"
+				className="mb-10 font-bold"
 			>
 				File extension renaming helper ( .js to .ts/.tsx )
 			</Typography>
 			<Typography
-				className="text-2xl mt-20 mb-10 font-700"
+				className="text-2xl mt-5 mb-2.5 font-bold"
 				variant="h5"
 			>
 				Introduction
 			</Typography>
 			<Typography
-				className="mb-16"
+				className="mb-4"
 				variant="body1"
 				gutterBottom
 			>
@@ -36,7 +36,7 @@ function TsFileRenamingMigrationDoc() {
 				identifying files that need to be renamed based on their content and then renaming them accordingly.
 			</Typography>
 			<Typography
-				className="text-2xl mt-20 mb-10 font-700"
+				className="text-2xl mt-5 mb-2.5 font-bold"
 				variant="h5"
 			>
 				How the Script Works
@@ -65,7 +65,7 @@ function TsFileRenamingMigrationDoc() {
 				</ListItem>
 			</List>
 			<Typography
-				className="text-2xl mt-20 mb-10 font-700"
+				className="text-2xl mt-5 mb-2.5 font-bold"
 				variant="h5"
 			>
 				Prerequisites
@@ -109,7 +109,7 @@ function TsFileRenamingMigrationDoc() {
 				</ListItem>
 			</List>
 			<Typography
-				className="mb-16"
+				className="mb-4"
 				variant="body1"
 				gutterBottom
 			>
@@ -123,7 +123,7 @@ function TsFileRenamingMigrationDoc() {
 				</Paper>
 			</Box>
 			<Typography
-				className="text-2xl mt-20 mb-10 font-700"
+				className="text-2xl mt-5 mb-2.5 font-bold"
 				variant="h5"
 			>
 				Usage
@@ -149,7 +149,7 @@ function TsFileRenamingMigrationDoc() {
 				</ListItem>
 			</List>
 			<Typography
-				className="text-2xl mt-20 mb-10 font-700"
+				className="text-2xl mt-5 mb-2.5 font-bold"
 				variant="h5"
 			>
 				Why Use This Script for Migration?
@@ -175,7 +175,7 @@ function TsFileRenamingMigrationDoc() {
 				</ListItem>
 			</List>
 			<Typography
-				className="text-2xl mt-20 mb-10 font-700"
+				className="text-2xl mt-5 mb-2.5 font-bold"
 				variant="h5"
 			>
 				Important Considerations
@@ -207,7 +207,7 @@ function TsFileRenamingMigrationDoc() {
 				</ListItem>
 			</List>
 			<Typography
-				className="text-2xl mt-20 mb-10 font-700"
+				className="text-2xl mt-5 mb-2.5 font-bold"
 				variant="h5"
 			>
 				Conclusion

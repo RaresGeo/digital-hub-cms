@@ -8,10 +8,10 @@ function jwtSignInTab() {
 		<div className="w-full">
 			<JwtSignInForm />
 
-			<div className="mt-32 flex items-center">
+			<div className="mt-8 flex items-center">
 				<div className="mt-px flex-auto border-t" />
 				<Typography
-					className="mx-8"
+					className="mx-2"
 					color="text.secondary"
 				>
 					Or continue with
@@ -19,7 +19,7 @@ function jwtSignInTab() {
 				<div className="mt-px flex-auto border-t" />
 			</div>
 
-			<div className="mt-32 flex items-center space-x-16">
+			<div className="mt-8 flex items-center space-x-4">
 				<Button
 					variant="outlined"
 					className="flex-auto"

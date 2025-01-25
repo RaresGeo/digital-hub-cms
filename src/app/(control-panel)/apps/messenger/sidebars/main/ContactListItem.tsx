@@ -39,7 +39,7 @@ function ContactListItem(props: ContactListItemProps) {
 
 	return (
 		<ListItemButton
-			className="px-24 py-12 min-h-80"
+			className="px-6 py-3 min-h-20"
 			onClick={handleClick}
 		>
 			<UserAvatar user={item} />

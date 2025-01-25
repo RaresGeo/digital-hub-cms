@@ -14,13 +14,13 @@ function RoutingDoc() {
 		<>
 			<Typography
 				variant="h4"
-				className="mb-40 font-700"
+				className="mb-10 font-bold"
 			>
 				Routing Overview
 			</Typography>
 
 			<Typography
-				className="mb-16"
+				className="mb-4"
 				component="p"
 			>
 				Fuse React utilizes a custom routing system based on the popular{'  '}
@@ -37,13 +37,13 @@ function RoutingDoc() {
 
 			<Typography
 				variant="h6"
-				className="mb-12"
+				className="mb-3"
 			>
 				Dynamic Route Imports
 			</Typography>
 
 			<Typography
-				className="mb-16"
+				className="mb-4"
 				component="p"
 			>
 				All routes are automatically populated in <code>src/configs/routesConfig</code>, eliminating the need
@@ -51,7 +51,7 @@ function RoutingDoc() {
 			</Typography>
 
 			<Typography
-				className="mb-16"
+				className="mb-4"
 				component="p"
 			>
 				You can easily customize settings or authorization for any route, ensuring that your application meets
@@ -60,12 +60,12 @@ function RoutingDoc() {
 
 			<Typography
 				variant="h6"
-				className="mb-12"
+				className="mb-3"
 			>
 				Example Usage
 			</Typography>
 			<Typography
-				className="mb-16"
+				className="mb-4"
 				component="p"
 			>
 				For instance, take a look at the code in <code>SignInPageRoute.tsx</code>. This is a route configuration
@@ -75,13 +75,13 @@ function RoutingDoc() {
 
 			<FuseHighlight
 				component="pre"
-				className="language-jsx mb-24"
+				className="language-jsx mb-6"
 			>
 				{signInPageRouteRaw}
 			</FuseHighlight>
 
 			<Typography
-				className="mb-16"
+				className="mb-4"
 				component="p"
 			>
 				In the example above, the sign-in page is configured with a simple and clear route definition. Notice
@@ -90,7 +90,7 @@ function RoutingDoc() {
 			</Typography>
 
 			<Typography
-				className="mb-16"
+				className="mb-4"
 				component="p"
 			>
 				By following this modular approach, you can ensure that each route in your application is tailored to

@@ -11,13 +11,13 @@ function ApiConfigurationDoc() {
 		<>
 			<Typography
 				variant="h4"
-				className="mb-40 font-700"
+				className="mb-10 font-bold"
 			>
 				API Configuration
 			</Typography>
 
 			<Typography
-				className="mb-16"
+				className="mb-4"
 				component="p"
 			>
 				This document explains how to configure and use API routes in the Fuse React Vite.js project with Mock
@@ -25,14 +25,14 @@ function ApiConfigurationDoc() {
 			</Typography>
 
 			<Typography
-				className="mt-24 mb-10"
+				className="mt-6 mb-2.5"
 				variant="h6"
 			>
 				MSW Configuration <TitleReferenceLink id="msw-configuration" />
 			</Typography>
 
 			<Typography
-				className="mb-16"
+				className="mb-4"
 				component="p"
 			>
 				MSW is employed to intercept and simulate API requests during the development and testing phases. This
@@ -40,7 +40,7 @@ function ApiConfigurationDoc() {
 			</Typography>
 
 			<Typography
-				className="mb-16"
+				className="mb-4"
 				component="p"
 			>
 				MSW is configured in the `index.tsx` file:
@@ -70,7 +70,7 @@ mockSetup().then(() => {
 			</FuseHighlight>
 
 			<Typography
-				className="mb-16"
+				className="mb-4"
 				component="p"
 			>
 				This setup ensures that MSW intercepts API requests, and allowing mocking api requests across the
@@ -78,14 +78,14 @@ mockSetup().then(() => {
 			</Typography>
 
 			<Typography
-				className="mt-24 mb-10"
+				className="mt-6 mb-2.5"
 				variant="h6"
 			>
 				Global API Configuration with apiFetch <TitleReferenceLink id="api-fetch-configuration" />
 			</Typography>
 
 			<Typography
-				className="mb-16"
+				className="mb-4"
 				component="p"
 			>
 				`utils/apiFetch` is used to set global headers and the `API_BASE_URL` for all Fetch API requests. You
@@ -113,21 +113,21 @@ export const apiFetch = (url: string, options: RequestInit = {}) => {
 			</FuseHighlight>
 
 			<Typography
-				className="mb-16"
+				className="mb-4"
 				component="p"
 			>
 				Ensure you have a `.env` file in your project root with the `VITE_API_BASE_URL` variable set.
 			</Typography>
 
 			<Typography
-				className="mt-24 mb-10"
+				className="mt-6 mb-2.5"
 				variant="h6"
 			>
 				Benefits of Using Mock Service Worker (MSW) <TitleReferenceLink id="msw-benefits" />
 			</Typography>
 
 			<Typography
-				className="mb-16"
+				className="mb-4"
 				component="p"
 			>
 				- Environment Agnostic: MSW works well in both development and production builds, making it easy to
@@ -135,7 +135,7 @@ export const apiFetch = (url: string, options: RequestInit = {}) => {
 			</Typography>
 
 			<Typography
-				className="mb-16"
+				className="mb-4"
 				component="p"
 			>
 				- Easy to Use: MSW provides a simple and intuitive API for mocking API requests, making it easy to set
@@ -143,7 +143,7 @@ export const apiFetch = (url: string, options: RequestInit = {}) => {
 			</Typography>
 
 			<Typography
-				className="mb-16"
+				className="mb-4"
 				component="p"
 			>
 				- Improved Development Workflow: With MSW, you can develop and test your application without relying on
@@ -151,14 +151,14 @@ export const apiFetch = (url: string, options: RequestInit = {}) => {
 			</Typography>
 
 			<Typography
-				className="mt-24 mb-10"
+				className="mt-6 mb-2.5"
 				variant="h6"
 			>
 				Connecting to a Real Database <TitleReferenceLink id="real-database-connection" />
 			</Typography>
 
 			<Typography
-				className="mb-16"
+				className="mb-4"
 				component="p"
 			>
 				To connect these API routes to a real database in a Vite.js project, you'll typically set up a backend
@@ -167,7 +167,7 @@ export const apiFetch = (url: string, options: RequestInit = {}) => {
 			</Typography>
 
 			<Typography
-				className="mb-16"
+				className="mb-4"
 				component="p"
 			>
 				In production, you would configure your Vite app to send requests to your real API endpoint by setting
