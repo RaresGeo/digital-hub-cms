@@ -52,7 +52,7 @@ function AiImageGenListItem(props: AiImageGenListItemProps) {
 			{item.favorite && (
 				<FuseSvgIcon className="absolute top-2 right-2 text-red-500">heroicons-solid:heart</FuseSvgIcon>
 			)}
-			<div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all duration-200 rounded-lg flex items-center justify-center opacity-0 group-hover:opacity-100">
+			<div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all duration-200 rounded-lg flex items-end sm:items-center pb-3 sm:pb-0 justify-center sm:opacity-0 group-hover:opacity-100">
 				<ButtonGroup
 					variant="contained"
 					sx={{

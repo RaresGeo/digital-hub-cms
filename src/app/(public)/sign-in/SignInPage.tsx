@@ -19,7 +19,7 @@ const tabs = [
 		id: 'jwt',
 		title: 'JWT',
 		logo: '/assets/images/logo/jwt.svg',
-		logoClass: 'h-9 p-4 bg-black rounded-lg'
+		logoClass: 'h-9 p-1 bg-black rounded-lg'
 	},
 	{
 		id: 'firebase',

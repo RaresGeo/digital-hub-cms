@@ -46,7 +46,7 @@ function ChatListItem(props: ChatListItemProps) {
 
 			<ListItemText
 				classes={{
-					root: 'min-w-px px-16',
+					root: 'min-w-px px-4',
 					primary: 'font-medium text-base',
 					secondary: 'truncate'
 				}}

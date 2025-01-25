@@ -10,6 +10,9 @@ import { Global } from '@emotion/react';
 import { AuthenticatorProps } from '@aws-amplify/ui-react/dist/types/components/Authenticator/Authenticator';
 
 const Root = styled('div')(({ theme }) => ({
+	'& [data-amplify-authenticator] [data-amplify-router]': {
+		boxShadow: 'none'
+	},
 	'& [data-amplify-theme]': {
 		fontSize: '0.8125rem',
 		'--amplify-fonts-default-static': 'Inter var,Roboto,"Helvetica",Arial,sans-serif',
@@ -55,7 +58,9 @@ const Root = styled('div')(({ theme }) => ({
 		'--amplify-colors-font-hover': theme.palette.secondary.dark,
 		'--amplify-internal-button-background-color': 'transparent',
 		'--amplify-internal-button-border-color': theme.palette.secondary.main,
+		'--amplify-colors-border-focus': theme.palette.secondary.main,
 		'--amplify-components-button-hover-border-color': theme.palette.secondary.main,
+		'--amplify-components-fieldcontrol-focus-border-color': theme.palette.secondary.main,
 		'--amplify-components-button-hover-background-color': 'transparent',
 		'--amplify-components-button-active-background-color': 'transparent',
 		'--amplify-components-button-link-overlay-active-background-color': theme.palette.secondary.light,
@@ -69,11 +74,12 @@ const Root = styled('div')(({ theme }) => ({
 		'--amplify-components-button-link-focus-box-shadow-sm-xs': '0',
 		'--amplify-components-button-link-focus-background-color': 'initial',
 		'--amplify-components-button-link-focus-color': theme.palette.secondary.dark,
+		'--amplify-components-fieldcontrol-focus-box-shadow': `0px 0px 0px 1px ${theme.palette.secondary.main}`,
 		'--amplify-components-fieldcontrol-focus-box-shadow-sm-xs': `0px 0px 0px 1px ${theme.palette.secondary.main}`,
 		'--amplify-components-authenticator-router-background-color': `initial`,
-		'--amplify-components-alert-padding-block': `1.2rem`,
-		'--amplify-components-alert-padding-inline': `1.2rem`,
-		'--amplify-components-fieldcontrol-border-radius': `0.4rem`,
+		'--amplify-components-alert-padding-block': `0.75rem`,
+		'--amplify-components-alert-padding-inline': `0.75rem`,
+		'--amplify-components-fieldcontrol-border-radius': `0.25rem`,
 		'& .amplify-tabs__list': {
 			display: 'none'
 		},
