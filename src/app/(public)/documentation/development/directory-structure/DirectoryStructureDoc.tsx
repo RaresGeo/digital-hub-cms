@@ -10,12 +10,12 @@ function DirectoryStructureDoc() {
 		<>
 			<Typography
 				variant="h4"
-				className="mb-40 font-700"
+				className="mb-10 font-bold"
 			>
 				Directory Structure and Naming Conventions
 			</Typography>
 			<Typography
-				className="mb-16"
+				className="mb-4"
 				component="p"
 			>
 				This document explains the directory structure and naming conventions used in Fuse React. Fuse React is
@@ -24,7 +24,7 @@ function DirectoryStructureDoc() {
 			</Typography>
 			<FuseHighlight
 				component="pre"
-				className="language-jsx my-24"
+				className="language-jsx my-6"
 			>
 				{`
 				├── contacts
@@ -54,7 +54,7 @@ function DirectoryStructureDoc() {
 				│       └── searchTextSlice.ts`}
 			</FuseHighlight>
 			<Typography
-				className="mb-16"
+				className="mb-4"
 				component="p"
 			>
 				The directory structure of Fuse React is organized by feature, with each feature having its own
@@ -62,35 +62,35 @@ function DirectoryStructureDoc() {
 				store.
 			</Typography>
 			<Typography
-				className="mb-16"
+				className="mb-4"
 				component="p"
 			>
 				<strong>Directories:</strong> named in lowercase and use hyphens to separate words. Example: `chat`,
 				`contacts`.
 			</Typography>
 			<Typography
-				className="mb-16"
+				className="mb-4"
 				component="p"
 			>
 				<strong>Files:</strong> named in PascalCase and use the name of the component, type, or model they
 				represent. Example: ` ContactApp.tsx`.
 			</Typography>
 			<Typography
-				className="mb-16"
+				className="mb-4"
 				component="p"
 			>
 				<strong>Components:</strong> named in PascalCase and use the name of the component they represent.
 				Example: ` ContactApp.tsx`, ` ContactForm.tsx`.
 			</Typography>
 			<Typography
-				className="mb-16"
+				className="mb-4"
 				component="p"
 			>
 				<strong>Models:</strong> named in PascalCase and use the name of the model they represent. Example:
 				`ContactModel.tsx`.
 			</Typography>
 			<Typography
-				className="mb-16"
+				className="mb-4"
 				component="p"
 			>
 				<strong>Sidebars/Tabs/Sections/Dialogs etc:</strong> For example Sidebar named in PascalCase and use the
@@ -100,28 +100,28 @@ function DirectoryStructureDoc() {
 				`MainSidebar.tsx`.
 			</Typography>
 			<Typography
-				className="mb-16"
+				className="mb-4"
 				component="p"
 			>
 				<strong>Store files:</strong> named in camelCase and use the name of the slice they represent. Example:
 				`contactListSlice.tsx`, `userSlice.tsx`.
 			</Typography>
 			<Typography
-				className="mb-16"
+				className="mb-4"
 				component="p"
 			>
 				<strong>Api files:</strong> have api endpoints and named in PascalCase. RTK Query is used for API calls.
 				Example: `ContaactsApi.ts`
 			</Typography>
 			<Typography
-				className="mb-16"
+				className="mb-4"
 				component="p"
 			>
 				<strong>Route files:</strong> named in PascalCase and use the name of the feature they represent,
 				followed by `Route`. Example: ` ContactAppRoute.tsx`.
 			</Typography>
 			<Typography
-				className="mb-16"
+				className="mb-4"
 				component="p"
 			>
 				By following these conventions, developers can quickly find the files and components they need and
@@ -129,7 +129,7 @@ function DirectoryStructureDoc() {
 				project grows in size and complexity.
 			</Typography>
 			<Typography
-				className="mb-16"
+				className="mb-4"
 				component="p"
 			>
 				Fuse React's directory structure might look overwhelming and intimidating at first, but following this

@@ -25,7 +25,7 @@ function TypographyDoc(props) {
 				Reference
 			</Button>
 			<Typography
-				className="text-5xl my-16 font-700"
+				className="text-5xl my-4 font-bold"
 				component="h1"
 			>
 				Typography
@@ -35,19 +35,19 @@ function TypographyDoc(props) {
 			</Typography>
 
 			<Typography
-				className="text-3xl mt-24 mb-10 font-700"
+				className="text-3xl mt-6 mb-2.5 font-bold"
 				component="h2"
 			>
 				Roboto font
 			</Typography>
 			<Typography
-				className="text-base mb-32"
+				className="text-base mb-8"
 				component="div"
 			>
 				Material UI uses the <a href="https://fonts.google.com/specimen/Roboto">Roboto</a> font by default. Add
 				it to your project via Fontsource, or with the Google Fonts CDN.
 			</Typography>
-			<div className="space-y-12">
+			<div className="space-y-3">
 				<FuseHighlight
 					component="pre"
 					className="language-bash npm"
@@ -77,7 +77,7 @@ yarn add @fontsource/roboto
 			</div>
 
 			<Typography
-				className="text-base mb-32"
+				className="text-base mb-8"
 				component="div"
 			>
 				Then you can import it in your entry point like this:
@@ -94,9 +94,9 @@ import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 `}
 			</FuseHighlight>
-			<div className="border-1 p-16 rounded-xl my-12">
+			<div className="border-1 p-4 rounded-xl my-3">
 				<Typography
-					className="text-base mb-32"
+					className="text-base mb-8"
 					component="div"
 				>
 					Fontsource can be configured to load specific subsets, weights, and styles. Material UI&#39;s
@@ -105,13 +105,13 @@ import '@fontsource/roboto/700.css';
 			</div>
 
 			<Typography
-				className="text-15 mt-20 mb-10 font-700"
+				className="text-lg mt-5 mb-2.5 font-bold"
 				component="h3"
 			>
 				Google Web Fonts
 			</Typography>
 			<Typography
-				className="text-base mb-32"
+				className="text-base mb-8"
 				component="div"
 			>
 				To install Roboto through the Google Web Fonts CDN, add the following code inside your project&#39;s{' '}
@@ -132,19 +132,19 @@ import '@fontsource/roboto/700.css';
 `}
 			</FuseHighlight>
 			<Typography
-				className="text-3xl mt-24 mb-10 font-700"
+				className="text-3xl mt-6 mb-2.5 font-bold"
 				component="h2"
 			>
 				Component
 			</Typography>
 			<Typography
-				className="text-15 mt-20 mb-10 font-700"
+				className="text-lg mt-5 mb-2.5 font-bold"
 				component="h3"
 			>
 				Usage
 			</Typography>
 			<Typography
-				className="text-base mb-32"
+				className="text-base mb-8"
 				component="div"
 			>
 				The Typography component follows the{' '}
@@ -152,25 +152,25 @@ import '@fontsource/roboto/700.css';
 				that provides a limited set of type sizes that work well together for a consistent layout.
 			</Typography>
 			<Typography
-				className="text-base mb-32"
+				className="text-base mb-8"
 				component="div"
 			>
 				<FuseExample
 					name="Types.js"
-					className="my-16"
+					className="my-4"
 					iframe={false}
 					component={TypesComponent}
 					raw={TypesRaw}
 				/>
 			</Typography>
 			<Typography
-				className="text-15 mt-20 mb-10 font-700"
+				className="text-lg mt-5 mb-2.5 font-bold"
 				component="h3"
 			>
 				Theme keys
 			</Typography>
 			<Typography
-				className="text-base mb-32"
+				className="text-base mb-8"
 				component="div"
 			>
 				In some situations you might not be able to use the Typography component. Hopefully, you might be able
@@ -181,31 +181,31 @@ import '@fontsource/roboto/700.css';
 				keys of the theme.
 			</Typography>
 			<Typography
-				className="text-base mb-32"
+				className="text-base mb-8"
 				component="div"
 			>
 				<FuseExample
 					name="TypographyTheme.js"
-					className="my-16"
+					className="my-4"
 					iframe={false}
 					component={TypographyThemeComponent}
 					raw={TypographyThemeRaw}
 				/>
 			</Typography>
 			<Typography
-				className="text-3xl mt-24 mb-10 font-700"
+				className="text-3xl mt-6 mb-2.5 font-bold"
 				component="h2"
 			>
 				Customization
 			</Typography>
 			<Typography
-				className="text-15 mt-20 mb-10 font-700"
+				className="text-lg mt-5 mb-2.5 font-bold"
 				component="h3"
 			>
 				Adding &amp; disabling variants
 			</Typography>
 			<Typography
-				className="text-base mb-32"
+				className="text-base mb-8"
 				component="div"
 			>
 				In addition to using the default typography variants, you can add custom ones, or disable any you
@@ -216,13 +216,13 @@ import '@fontsource/roboto/700.css';
 				page for more info.
 			</Typography>
 			<Typography
-				className="text-15 mt-20 mb-10 font-700"
+				className="text-lg mt-5 mb-2.5 font-bold"
 				component="h3"
 			>
 				Changing the semantic element
 			</Typography>
 			<Typography
-				className="text-base mb-32"
+				className="text-base mb-8"
 				component="div"
 			>
 				The Typography component uses the <code>variantMapping</code> prop to associate a UI variant with a
@@ -230,7 +230,7 @@ import '@fontsource/roboto/700.css';
 				from the semantic underlying element.
 			</Typography>
 			<Typography
-				className="text-base mb-32"
+				className="text-base mb-8"
 				component="div"
 			>
 				To change the underlying element for a one-off situation, like avoiding two <code>h1</code> elements in
@@ -248,7 +248,7 @@ import '@fontsource/roboto/700.css';
 `}
 			</FuseHighlight>
 			<Typography
-				className="text-base mb-32"
+				className="text-base mb-8"
 				component="div"
 			>
 				To change the typography element mapping globally,{' '}
@@ -283,14 +283,14 @@ const theme = createTheme({
 `}
 			</FuseHighlight>
 			<Typography
-				className="text-15 mt-20 mb-10 font-700"
+				className="text-lg mt-5 mb-2.5 font-bold"
 				component="h3"
 			>
 				System props
 			</Typography>
-			<div className="border-1 p-16 rounded-xl my-12">
+			<div className="border-1 p-4 rounded-xl my-3">
 				<Typography
-					className="text-base mb-32"
+					className="text-base mb-8"
 					component="div"
 				>
 					System props are deprecated and will be removed in the next major release. Please use the{' '}
@@ -309,18 +309,18 @@ const theme = createTheme({
 			</div>
 
 			<Typography
-				className="text-3xl mt-24 mb-10 font-700"
+				className="text-3xl mt-6 mb-2.5 font-bold"
 				component="h2"
 			>
 				Accessibility
 			</Typography>
 			<Typography
-				className="text-base mb-32"
+				className="text-base mb-8"
 				component="div"
 			>
 				Key factors to follow for an accessible typography:
 			</Typography>
-			<ul className="space-y-16">
+			<ul className="space-y-4">
 				<li>
 					<strong>Color</strong>. Provide enough contrast between text and its background, check out the
 					minimum recommended{' '}

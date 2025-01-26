@@ -17,20 +17,20 @@ function AuthorizationDoc() {
 		<>
 			<Typography
 				variant="h3"
-				className="mb-40 font-700"
+				className="mb-10 font-bold"
 			>
 				Authorization in Fuse React
 			</Typography>
 
 			<Typography
-				className="mb-16"
+				className="mb-4"
 				component="p"
 			>
 				Fuse React employs the <code>FuseAuthorization</code> provider to handle route-level authorization,
 				taking into account user roles and the defined route authentication.
 			</Typography>
 			<Typography
-				className="mb-16"
+				className="mb-4"
 				component="p"
 			>
 				Before route component is rendered, FuseAuthorization checks if the user is authenticated and has the
@@ -41,20 +41,20 @@ function AuthorizationDoc() {
 
 			<Typography
 				variant="h5"
-				className="mt-32 mb-8 font-700"
+				className="mt-8 mb-2 font-bold"
 			>
 				Implementing Authorization
 			</Typography>
 
 			<Typography
 				variant="h6"
-				className="mt-20 mb-8 font-700"
+				className="mt-5 mb-2 font-bold"
 			>
 				Handling User roles
 			</Typography>
 
 			<Typography
-				className="mb-16"
+				className="mb-4"
 				component="p"
 			>
 				You can use the <code>useUser()</code> hook and from <code>FuseAuthContext/FuseAuthProvider</code> to
@@ -63,13 +63,13 @@ function AuthorizationDoc() {
 
 			<Typography
 				variant="subtitle2"
-				className="mb-16"
+				className="mb-4"
 			>
 				useUser() hook:
 			</Typography>
 			<FuseHighlight
 				component="pre"
-				className="language-jsx mb-24"
+				className="language-jsx mb-6"
 			>
 				{`
 import useUser from '@auth/useUser';
@@ -80,13 +80,13 @@ function MyComponent() {
 			</FuseHighlight>
 			<Typography
 				variant="subtitle2"
-				className="mb-16"
+				className="mb-4"
 			>
 				FuseAuthProvider:
 			</Typography>
 			<FuseHighlight
 				component="pre"
-				className="language-jsx mb-24"
+				className="language-jsx mb-6"
 			>
 				{`
 	<FuseAuthProvider providers={authProviders}>
@@ -100,12 +100,12 @@ function MyComponent() {
 
 			<Typography
 				variant="h6"
-				className="mt-32 mb-8 font-700"
+				className="mt-8 mb-2 font-bold"
 			>
 				Authorization in components:
 			</Typography>
 
-			<ol className="list-decimal list-inside mb-16 p-0">
+			<ol className="list-decimal list-inside mb-4 p-0">
 				<li>
 					Use the <code>useUser</code> hook to access user data and roles
 				</li>
@@ -116,7 +116,7 @@ function MyComponent() {
 			</ol>
 
 			<Typography
-				className="mb-16"
+				className="mb-4"
 				variant="subtitle2"
 			>
 				Example usage:
@@ -124,7 +124,7 @@ function MyComponent() {
 
 			<FuseHighlight
 				component="pre"
-				className="language-jsx mb-24"
+				className="language-jsx mb-6"
 			>
 				{`
 import useUser from '@auth/useUser';
@@ -147,20 +147,20 @@ function ProtectedComponent() {
 
 			<Typography
 				variant="h6"
-				className="mt-32 mb-8 font-700"
+				className="mt-8 mb-2 font-bold"
 			>
 				Route-level Authorization
 			</Typography>
 
 			<Typography
-				className="text-15 mt-16 mb-10 font-700"
+				className="text-lg mt-4 mb-2.5 font-bold"
 				variant="h6"
 			>
 				Route Configuration:
 			</Typography>
 
 			<Typography
-				className="mb-16"
+				className="mb-4"
 				component="p"
 			>
 				You need to define authorization (auth) in the <b>route config files</b> to control the access via
@@ -168,14 +168,14 @@ function ProtectedComponent() {
 			</Typography>
 
 			<Typography
-				className="mt-32 mb-8"
+				className="mt-8 mb-2"
 				variant="subtitle2"
 			>
 				Example Usage:
 			</Typography>
 
 			<Typography
-				className="inline-block mb-8 italic"
+				className="inline-block mb-2 italic"
 				component="code"
 			>
 				@/app/(control-panel)/auth/admin-role-example/AdminRoleExampleConfig.tsx
@@ -189,14 +189,14 @@ function ProtectedComponent() {
 			</FuseHighlight>
 
 			<Typography
-				className="my-16"
+				className="my-4"
 				component="p"
 			>
 				You can also give different auth values for individual routes with writing auth value inside the route
 				object.
 			</Typography>
 
-			<Paper className="max-w-md my-16 px-16">
+			<Paper className="max-w-xl my-4 px-4">
 				<Table className="m-0">
 					<TableHead>
 						<TableRow>
@@ -228,13 +228,13 @@ function ProtectedComponent() {
 			</Paper>
 			<Typography
 				variant="h6"
-				className="mt-32 mb-8 font-700"
+				className="mt-8 mb-2 font-bold"
 			>
 				Navigation Item Configuration:
 			</Typography>
 
 			<Typography
-				className="mb-16"
+				className="mb-4"
 				component="p"
 			>
 				You can control the navigation <b>item/group/collapse</b> visibility by adding <b>auth</b>
@@ -242,20 +242,20 @@ function ProtectedComponent() {
 			</Typography>
 
 			<Typography
-				className="mt-32 mb-8"
+				className="mt-8 mb-2"
 				variant="subtitle2"
 			>
 				Example Usage:
 			</Typography>
 
-			<div className="flex lg:grid-cols-2 gap-12">
+			<div className="flex lg:grid-cols-2 gap-3">
 				<div className="flex flex-1">
 					<FuseNavigation navigation={authProtectedNavigationExamples} />
 				</div>
 				<div className="flex flex-1 ">
 					<FuseHighlight
 						component="pre"
-						className="language-js mb-32 max-h-sm overflow-y-auto"
+						className="language-js mb-8 max-h-sm overflow-y-auto"
 					>
 						{authProtectedNavigationExamplesRaw}
 					</FuseHighlight>
@@ -264,7 +264,7 @@ function ProtectedComponent() {
 
 			<Typography
 				variant="h6"
-				className="mt-32 mb-8 font-700"
+				className="mt-8 mb-2 font-bold"
 			>
 				Default Auth value:
 			</Typography>
@@ -279,14 +279,14 @@ function ProtectedComponent() {
 			</Typography>
 
 			<Typography
-				className="mt-24 mb-4"
+				className="mt-6 mb-1"
 				variant="h6"
 			>
 				Making the whole app auth protected by default:
 			</Typography>
 
 			<Typography
-				className="mb-12"
+				className="mb-3"
 				variant="subtitle2"
 			>
 				src/configs/settingsConfig.tsx
@@ -294,7 +294,7 @@ function ProtectedComponent() {
 
 			<FuseHighlight
 				component="pre"
-				className="language-js mb-32"
+				className="language-js mb-8"
 			>
 				{`
 					defaultAuth:['admin','staff','user']
@@ -302,14 +302,14 @@ function ProtectedComponent() {
 			</FuseHighlight>
 
 			<Typography
-				className="mt-24 mb-4"
+				className="mt-6 mb-1"
 				variant="h6"
 			>
 				Making the whole app without authorization by default
 			</Typography>
 
 			<Typography
-				className="mb-12"
+				className="mb-3"
 				variant="subtitle2"
 			>
 				src/src/configs/settingsConfig.tsx
@@ -317,7 +317,7 @@ function ProtectedComponent() {
 
 			<FuseHighlight
 				component="pre"
-				className="language-js mb-32"
+				className="language-js mb-8"
 			>
 				{`
 				defaultAuth: null
@@ -325,12 +325,12 @@ function ProtectedComponent() {
 			</FuseHighlight>
 			<Typography
 				variant="h5"
-				className="mt-32 mb-8 font-700"
+				className="mt-8 mb-2 font-bold"
 			>
 				Best Practices
 			</Typography>
 
-			<ul className="list-disc list-inside mb-16 px-0">
+			<ul className="list-disc list-inside mb-4 px-0">
 				<li>
 					Always use the <code>useUser</code> hook to access user data and perform authorization checks
 				</li>

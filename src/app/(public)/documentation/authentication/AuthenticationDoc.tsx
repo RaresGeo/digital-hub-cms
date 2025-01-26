@@ -6,21 +6,21 @@ function AuthenticationDoc() {
 		<>
 			<Typography
 				variant="h4"
-				className="mb-40 font-700"
+				className="mb-10 font-bold"
 			>
 				Authentication System
 			</Typography>
 
 			<Typography
 				variant="body1"
-				className="mb-24"
+				className="mb-6"
 			>
 				Fuse React's authentication system is designed to be flexible and robust, supporting multiple
 				authentication services for a seamless and secure user experience. Currently, we provide three example
 				authentication services:
 			</Typography>
 
-			<ol className="list-disc pl-16 mb-24 space-y-2">
+			<ol className="list-disc pl-4 mb-6 space-y-0.5">
 				<li>
 					<Typography variant="body1">Firebase Authentication</Typography>
 				</li>
@@ -34,7 +34,7 @@ function AuthenticationDoc() {
 
 			<Typography
 				variant="body1"
-				className="mb-24"
+				className="mb-6"
 			>
 				This multi-service approach allows us to cater to a wide range of authentication requirements and
 				preferences, providing developers with the flexibility to choose the service that best fits their
@@ -43,14 +43,14 @@ function AuthenticationDoc() {
 
 			<Typography
 				variant="h5"
-				className="mt-40 mb-20 font-700"
+				className="mt-10 mb-5 font-bold"
 			>
 				Entry Point: Authentication Component
 			</Typography>
 
 			<Typography
 				variant="body1"
-				className="mb-24"
+				className="mb-6"
 			>
 				The <code>Authentication</code> component serves as the entry point for the authentication system. It
 				wraps the main application components, ensuring that authentication context is available throughout the
@@ -59,13 +59,13 @@ function AuthenticationDoc() {
 
 			<Typography
 				variant="body1"
-				className="mb-16"
+				className="mb-4"
 			>
 				Integration in <code>App.js</code>:
 			</Typography>
 			<FuseHighlight
 				component="pre"
-				className="language-jsx mb-24"
+				className="language-jsx mb-6"
 			>
 				{`
 				return (
@@ -80,19 +80,19 @@ function AuthenticationDoc() {
 
 			<Typography
 				variant="h5"
-				className="mt-40 mb-20 font-700"
+				className="mt-10 mb-5 font-bold"
 			>
 				FuseAuthProvider Overview
 			</Typography>
 
 			<Typography
 				variant="body1"
-				className="mb-24"
+				className="mb-6"
 			>
 				The <code>FuseAuthProvider</code> is a context provider component that manages the authentication state
 				across multiple authentication providers. It is responsible for:
 			</Typography>
-			<ul className="list-disc pl-16 mb-24 space-y-2">
+			<ul className="list-disc pl-4 mb-6 space-y-0.5">
 				<li>
 					Managing the authentication state (<code>authState</code>) and the current provider.
 				</li>
@@ -103,12 +103,12 @@ function AuthenticationDoc() {
 
 			<Typography
 				variant="h5"
-				className="mt-40 mb-20 font-700"
+				className="mt-10 mb-5 font-bold"
 			>
 				Key Features of FuseAuthProvider
 			</Typography>
 
-			<ol className="list-decimal pl-16 mb-24 space-y-2">
+			<ol className="list-decimal pl-4 mb-6 space-y-0.5">
 				<li>
 					<Typography variant="body1">
 						State Management: It maintains the authentication state, including whether the user is
@@ -144,14 +144,14 @@ function AuthenticationDoc() {
 
 			<Typography
 				variant="h5"
-				className="mt-40 mb-20 font-700"
+				className="mt-10 mb-5 font-bold"
 			>
 				Usage in Authentication Component
 			</Typography>
 
 			<Typography
 				variant="body1"
-				className="mb-24"
+				className="mb-6"
 			>
 				The <code>Authentication</code> component uses <code>FuseAuthProvider</code> to wrap the application
 				components, ensuring that authentication context and state are available throughout the application.
@@ -160,7 +160,7 @@ function AuthenticationDoc() {
 
 			<FuseHighlight
 				component="pre"
-				className="language-jsx mb-24"
+				className="language-jsx mb-6"
 			>
 				{`
 import React from 'react';
@@ -199,12 +199,12 @@ export default Authentication;
 
 			<Typography
 				variant="h5"
-				className="mt-40 mb-20 font-700"
+				className="mt-10 mb-5 font-bold"
 			>
 				Explanation
 			</Typography>
 
-			<ul className="list-disc px-0 mb-24 space-y-2">
+			<ul className="list-disc px-0 mb-6 space-y-0.5">
 				<li>
 					<Typography variant="body1">
 						Providers Array: The <code>authProviders</code> array defines the available authentication
@@ -234,14 +234,14 @@ export default Authentication;
 
 			<Typography
 				variant="h5"
-				className="mt-40 mb-20 font-700"
+				className="mt-10 mb-5 font-bold"
 			>
 				Conclusion
 			</Typography>
 
 			<Typography
 				variant="body1"
-				className="mb-24"
+				className="mb-6"
 			>
 				The <code>FuseAuthProvider</code> is a central piece of the authentication system, enabling seamless
 				integration and management of multiple authentication providers. It provides a flexible and scalable

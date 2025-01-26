@@ -9,13 +9,13 @@ function DeploymentDoc() {
 		<>
 			<Typography
 				variant="h4"
-				className="mb-40 font-700"
+				className="mb-10 font-bold"
 			>
 				Deployment
 			</Typography>
 
 			<Typography
-				className="mb-16"
+				className="mb-4"
 				component="p"
 			>
 				For assistance, please refer to the
@@ -23,7 +23,7 @@ function DeploymentDoc() {
 					href="https://vitejs.dev/guide/static-deploy"
 					target="_blank"
 					rel="noreferrer noopener"
-					className="ml-4"
+					className="ml-1"
 				>
 					deployment documentation
 				</a>{' '}

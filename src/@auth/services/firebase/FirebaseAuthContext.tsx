@@ -2,6 +2,8 @@ import { createContext } from 'react';
 import { FirebaseSignInPayload, FirebaseSignUpPayload } from '@auth/services/firebase/FirebaseAuthProvider';
 import { FuseAuthProviderState } from '@fuse/core/FuseAuthProvider/types/FuseAuthTypes';
 import { User } from '@auth/user';
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-expect-error
 import firebase from 'firebase/compat';
 
 export type FirebaseAuthContextType = FuseAuthProviderState<User> & {

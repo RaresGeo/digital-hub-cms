@@ -59,13 +59,13 @@ renderer.heading = (text, level) => {
 	let className = '';
 	switch (level) {
 		case 1:
-			className = 'text-5xl my-16 font-700';
+			className = 'text-5xl my-16 font-bold';
 			break;
 		case 2:
-			className = 'text-3xl mt-24 mb-10 font-700';
+			className = 'text-3xl mt-24 mb-10 font-bold';
 			break;
 		case 3:
-			className = 'text-15 mt-20 mb-10 font-700';
+			className = 'text-15 mt-20 mb-10 font-bold';
 			break;
 		default:
 			className = 'text-base mt-12 mb-10';
@@ -75,7 +75,7 @@ renderer.heading = (text, level) => {
 };
 
 renderer.paragraph = (text) => {
-	return `<Typography className="text-base mb-32" component="div">${text}</Typography>\n`;
+	return `<Typography className="text-base mb-8" component="div">${text}</Typography>\n`;
 };
 
 renderer.code = (code, lang) => {
@@ -213,7 +213,7 @@ function getHtmlCode(markdownSource: string, fileDir: string) {
 
 	markdownSource = markdownSource.replace(
 		/:::info([\s\S]*?):::/g,
-		'<div className="border-1 p-16 rounded-xl my-12">\n$1\n</div>'
+		'<div className="border-1 p-4 rounded-xl my-3">\n$1\n</div>'
 	);
 
 	let contentsArr = getContents(markdownSource);
@@ -273,7 +273,7 @@ function getHtmlCode(markdownSource: string, fileDir: string) {
 
 				return `\n<FuseExample
                     name="${name}"
-                    className="my-16"
+                    className="my-4"
                     iframe={${iframe}}
                     component={${componentNameVar}} 
                     raw={${componentRawVar}}
@@ -301,10 +301,10 @@ function getHtmlCode(markdownSource: string, fileDir: string) {
 		.replace(/<br>/g, '<br/>')
 		.replace(/\/static\//g, '/material-ui-static/')
 		.replace(/<!-- #default-branch-switch -->/g, '')
-		.replace(/<ul>/g, '<ul className="space-y-16">')
-		.replace(/<ul start="(\d+)">/g, '<ul className="space-y-16" start={$1}>')
+		.replace(/<ul>/g, '<ul className="space-y-4">')
+		.replace(/<ul start="(\d+)">/g, '<ul className="space-y-4" start={$1}>')
 		.replace(/<ol start="(\d+)">/g, '<ol start={$1}>')
-		.replace(/<codeblock[\s\S]*?>/g, '<div className="space-y-12">')
+		.replace(/<codeblock[\s\S]*?>/g, '<div className="space-y-3">')
 		.replace(/<\/codeblock>/g, '</div>')
 		.replace(/<!--[\s\S]*?-->/g, '');
 

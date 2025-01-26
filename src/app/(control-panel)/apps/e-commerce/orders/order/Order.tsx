@@ -59,7 +59,7 @@ function Order() {
 					There is no such order!
 				</Typography>
 				<Button
-					className="mt-24"
+					className="mt-6"
 					component={Link}
 					variant="outlined"
 					to="/apps/e-commerce/orders"
@@ -75,12 +75,12 @@ function Order() {
 		<FusePageCarded
 			header={
 				order && (
-					<div className="flex flex-1 flex-col py-32">
+					<div className="flex flex-1 flex-col py-8">
 						<motion.div
 							initial={{ x: 20, opacity: 0 }}
 							animate={{ x: 0, opacity: 1, transition: { delay: 0.3 } }}
 						>
-							<PageBreadcrumb className="mb-8" />
+							<PageBreadcrumb className="mb-2" />
 						</motion.div>
 
 						<motion.div
@@ -102,9 +102,9 @@ function Order() {
 				)
 			}
 			content={
-				<div className="p-16 sm:p-24 w-full">
+				<div className="p-4 sm:p-6 w-full">
 					<FuseTabs
-						className="mb-32"
+						className="mb-8"
 						value={tabValue}
 						onChange={handleTabChange}
 					>

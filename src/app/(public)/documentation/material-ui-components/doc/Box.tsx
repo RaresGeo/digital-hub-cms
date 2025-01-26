@@ -26,7 +26,7 @@ function BoxDoc(props) {
 			</Button>
 
 			<Typography
-				className="text-5xl my-16 font-700"
+				className="text-5xl my-4 font-bold"
 				component="h1"
 			>
 				Box
@@ -36,13 +36,13 @@ function BoxDoc(props) {
 			</Typography>
 
 			<Typography
-				className="text-3xl mt-24 mb-10 font-700"
+				className="text-3xl mt-6 mb-2.5 font-bold"
 				component="h2"
 			>
 				Introduction
 			</Typography>
 			<Typography
-				className="text-base mb-32"
+				className="text-base mb-8"
 				component="div"
 			>
 				The Box component is a generic container for grouping other components. It&#39;s a fundamental building
@@ -54,13 +54,13 @@ function BoxDoc(props) {
 				.
 			</Typography>
 			<Typography
-				className="text-15 mt-20 mb-10 font-700"
+				className="text-lg mt-5 mb-2.5 font-bold"
 				component="h3"
 			>
 				Usage
 			</Typography>
 			<Typography
-				className="text-base mb-32"
+				className="text-base mb-8"
 				component="div"
 			>
 				The Box component differs from other containers available in Material UI in that its usage is intended
@@ -71,7 +71,7 @@ function BoxDoc(props) {
 				and Paper for elevated surfaces.
 			</Typography>
 			<Typography
-				className="text-3xl mt-24 mb-10 font-700"
+				className="text-3xl mt-6 mb-2.5 font-bold"
 				component="h2"
 			>
 				Basics
@@ -86,7 +86,7 @@ import Box from '@mui/material/Box';
 `}
 			</FuseHighlight>
 			<Typography
-				className="text-base mb-32"
+				className="text-base mb-8"
 				component="div"
 			>
 				The Box component renders as a <code>{`<div>`}</code> by default, but you can swap in any other valid
@@ -94,31 +94,31 @@ import Box from '@mui/material/Box';
 				<code>{`<div>`}</code> with a <code>{`<section>`}</code> element:
 			</Typography>
 			<Typography
-				className="text-base mb-32"
+				className="text-base mb-8"
 				component="div"
 			>
 				<FuseExample
 					name="BoxBasic.js"
-					className="my-16"
+					className="my-4"
 					iframe={false}
 					component={BoxBasicComponent}
 					raw={BoxBasicRaw}
 				/>
 			</Typography>
 			<Typography
-				className="text-3xl mt-24 mb-10 font-700"
+				className="text-3xl mt-6 mb-2.5 font-bold"
 				component="h2"
 			>
 				Customization
 			</Typography>
 			<Typography
-				className="text-15 mt-20 mb-10 font-700"
+				className="text-lg mt-5 mb-2.5 font-bold"
 				component="h3"
 			>
 				With the sx prop
 			</Typography>
 			<Typography
-				className="text-base mb-32"
+				className="text-base mb-8"
 				component="div"
 			>
 				Use the{' '}
@@ -130,26 +130,26 @@ import Box from '@mui/material/Box';
 				from the theme using this prop:
 			</Typography>
 			<Typography
-				className="text-base mb-32"
+				className="text-base mb-8"
 				component="div"
 			>
 				<FuseExample
 					name="BoxSx.js"
-					className="my-16"
+					className="my-4"
 					iframe={false}
 					component={BoxSxComponent}
 					raw={BoxSxRaw}
 				/>
 			</Typography>
 			<Typography
-				className="text-15 mt-20 mb-10 font-700"
+				className="text-lg mt-5 mb-2.5 font-bold"
 				component="h3"
 			>
 				With MUI System props
 			</Typography>
-			<div className="border-1 p-16 rounded-xl my-12">
+			<div className="border-1 p-4 rounded-xl my-3">
 				<Typography
-					className="text-base mb-32"
+					className="text-base mb-8"
 					component="div"
 				>
 					System props are deprecated and will be removed in the next major release. Please use the{' '}
@@ -168,13 +168,13 @@ import Box from '@mui/material/Box';
 			</div>
 
 			<Typography
-				className="text-3xl mt-24 mb-10 font-700"
+				className="text-3xl mt-6 mb-2.5 font-bold"
 				component="h2"
 			>
 				Anatomy
 			</Typography>
 			<Typography
-				className="text-base mb-32"
+				className="text-base mb-8"
 				component="div"
 			>
 				The Box component is composed of a single root <code>{`<div>`}</code> element:
