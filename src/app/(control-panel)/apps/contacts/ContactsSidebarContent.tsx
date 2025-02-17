@@ -8,7 +8,7 @@ import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
  */
 function ContactsSidebarContent() {
 	return (
-		<div className="flex flex-col flex-auto max-w-full w-md">
+		<div className="flex flex-col flex-auto max-w-full">
 			<IconButton
 				className="absolute top-0 right-0 my-4 mx-8 z-10"
 				sx={{
