@@ -1,6 +1,6 @@
 const apiUrl = new URL((import.meta?.env?.VITE_API_BASE_URL as string) || 'http://localhost:3000');
 const devApiBaseHost = apiUrl.hostname;
-const PORT = Number(import.meta.env.VITE_PORT) || 3000;
+const PORT = Number(import.meta.env.VITE_PORT) || 3001;
 const devApiBaseUrl = `${apiUrl.protocol}//${devApiBaseHost}:${PORT}`;
 
 export const API_BASE_URL = import.meta.env.DEV ? devApiBaseUrl : (import.meta.env.VITE_API_BASE_URL as string) || '/';
@@ -45,7 +45,8 @@ const apiFetch = async (endpoint: string, options: FetchOptions = {}) => {
 			...globalHeaders,
 			...headers
 		},
-		...restOptions
+		...restOptions,
+		credentials: 'include'
 	};
 
 	try {

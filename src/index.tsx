@@ -1,5 +1,6 @@
 import '@i18n/i18n';
 import './styles/index.css';
+import './styles/animations.css';
 import { createRoot } from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router';
 import routes from 'src/configs/routesConfig';
@@ -7,6 +8,7 @@ import { worker } from '@mock-utils/mswMockAdapter';
 import { API_BASE_URL } from '@/utils/apiFetch';
 
 async function mockSetup() {
+	console.debug('Starting mock service worker', `${API_BASE_URL}/mockServiceWorker.js`);
 	return worker.start({
 		onUnhandledRequest: 'bypass',
 		serviceWorker: {

@@ -7,36 +7,21 @@ import apiFetch from '@/utils/apiFetch';
  * Refreshes the access token
  */
 export async function authRefreshToken(): Promise<Response> {
-	return apiFetch('/api/mock/auth/refresh', { method: 'POST' });
+	return apiFetch('/api/auth/refresh-token', { method: 'POST' });
 }
 
 /**
- * Sign in with token
+ * Gets the profile of the currently logged in user using cookies
  */
-export async function authSignInWithToken(accessToken: string): Promise<Response> {
-	return apiFetch('/api/mock/auth/sign-in-with-token', {
-		headers: { Authorization: `Bearer ${accessToken}` }
-	});
+export async function authGetProfile(): Promise<Response> {
+	return apiFetch('/api/auth/profile');
 }
 
 /**
- * Sign in
+ * Logs out by deleting the cookies
  */
-export async function authSignIn(credentials: { email: string; password: string }): Promise<Response> {
-	return apiFetch('/api/mock/auth/sign-in', {
-		method: 'POST',
-		body: JSON.stringify(credentials)
-	});
-}
-
-/**
- * Sign up
- */
-export async function authSignUp(data: { displayName: string; email: string; password: string }): Promise<Response> {
-	return apiFetch('/api/mock/auth/sign-up', {
-		method: 'POST',
-		body: JSON.stringify(data)
-	});
+export async function authLogout(): Promise<Response> {
+	return apiFetch('/api/auth/logout', { method: 'POST' });
 }
 
 /**

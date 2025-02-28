@@ -14,7 +14,8 @@ const baseQuery: BaseQueryFn<string | FetchArgs, unknown, FetchBaseQueryError, o
 				headers.set(key, value);
 			});
 			return headers;
-		}
+		},
+		credentials: 'include'
 	})(args, api, extraOptions);
 
 	// Example of handling specific error codes
@@ -27,6 +28,7 @@ const baseQuery: BaseQueryFn<string | FetchArgs, unknown, FetchBaseQueryError, o
 
 export const apiService = createApi({
 	baseQuery,
+	tagTypes: ['Profile', 'Product'],
 	endpoints: () => ({}),
 	reducerPath: 'apiService'
 });

@@ -1,10 +1,7 @@
 import { useState, useEffect, useCallback, useMemo, useImperativeHandle } from 'react';
 import { FuseAuthProviderComponentProps, FuseAuthProviderState } from '@fuse/core/FuseAuthProvider/types/FuseAuthTypes';
-import useLocalStorage from '@fuse/hooks/useLocalStorage';
-import { authRefreshToken, authSignIn, authSignInWithToken, authSignUp, authUpdateDbUser } from '@auth/authApi';
+import { authGetProfile, authLogout, authRefreshToken, authUpdateDbUser } from '@auth/authApi';
 import { User } from '../../user';
-import { removeGlobalHeaders, setGlobalHeaders } from '@/utils/apiFetch';
-import { isTokenValid } from './utils/jwtUtils';
 import JwtAuthContext from '@auth/services/jwt/JwtAuthContext';
 import { JwtAuthContextType } from '@auth/services/jwt/JwtAuthContext';
 
@@ -19,14 +16,26 @@ export type JwtSignUpPayload = {
 	password: string;
 };
 
+interface BackendUser {
+	email: string;
+	name: string;
+	picture: string;
+	isAdmin: boolean;
+	googleId: string;
+}
+
+function mapBackendUserToUser(backendUser: BackendUser): User {
+	return {
+		id: backendUser.googleId,
+		role: backendUser.isAdmin ? 'admin' : null,
+		displayName: backendUser.name,
+		photoURL: backendUser.picture,
+		email: backendUser.email
+	};
+}
+
 function JwtAuthProvider(props: FuseAuthProviderComponentProps) {
 	const { ref, children, onAuthStateChanged } = props;
-
-	const {
-		value: tokenStorageValue,
-		setValue: setTokenStorageValue,
-		removeValue: removeTokenStorageValue
-	} = useLocalStorage<string>('jwt_access_token');
 
 	/**
 	 * Fuse Auth Provider State
@@ -36,6 +45,10 @@ function JwtAuthProvider(props: FuseAuthProviderComponentProps) {
 		isAuthenticated: false,
 		user: null
 	});
+
+	useEffect(() => {
+		console.debug(authState);
+	}, [authState]);
 
 	/**
 	 * Watch for changes in the auth state
@@ -52,28 +65,18 @@ function JwtAuthProvider(props: FuseAuthProviderComponentProps) {
 	 */
 	useEffect(() => {
 		const attemptAutoLogin = async () => {
-			const accessToken = tokenStorageValue;
+			try {
+				const response = await authGetProfile();
 
-			if (isTokenValid(accessToken)) {
-				try {
-					/**
-					 * Sign in with the token
-					 */
-					const response = await authSignInWithToken(accessToken);
-
-					if (!response.ok) {
-						throw new Error(`HTTP error! status: ${response.status}`);
-					}
-
-					const userData = (await response.json()) as User;
-
-					return userData;
-				} catch {
-					return false;
+				if (!response.ok || response.status === 401) {
+					throw new Error(`HTTP error! status: ${response.status}`);
 				}
-			}
 
-			return false;
+				const userData = (await response.json()) as BackendUser;
+				return mapBackendUserToUser(userData);
+			} catch {
+				return false;
+			}
 		};
 
 		if (!authState.isAuthenticated) {
@@ -84,9 +87,7 @@ function JwtAuthProvider(props: FuseAuthProviderComponentProps) {
 						isAuthenticated: true,
 						user: userData
 					});
-				} else {
-					removeTokenStorageValue();
-					removeGlobalHeaders(['Authorization']);
+				} else if (userData === false) {
 					setAuthState({
 						authStatus: 'unauthenticated',
 						isAuthenticated: false,
@@ -95,69 +96,19 @@ function JwtAuthProvider(props: FuseAuthProviderComponentProps) {
 				}
 			});
 		}
-		// eslint-disable-next-line
 	}, [authState.isAuthenticated]);
-
-	/**
-	 * Sign in
-	 */
-	const signIn: JwtAuthContextType['signIn'] = useCallback(
-		async (credentials) => {
-			const response = await authSignIn(credentials);
-
-			const session = (await response.json()) as { user: User; access_token: string };
-
-			if (session) {
-				setAuthState({
-					authStatus: 'authenticated',
-					isAuthenticated: true,
-					user: session.user
-				});
-				setTokenStorageValue(session.access_token);
-				setGlobalHeaders({ Authorization: `Bearer ${session.access_token}` });
-			}
-
-			return response;
-		},
-		[setTokenStorageValue]
-	);
-
-	/**
-	 * Sign up
-	 */
-	const signUp: JwtAuthContextType['signUp'] = useCallback(
-		async (data) => {
-			const response = await authSignUp(data);
-
-			const session = (await response.json()) as { user: User; access_token: string };
-
-			if (session) {
-				setAuthState({
-					authStatus: 'authenticated',
-					isAuthenticated: true,
-					user: session.user
-				});
-				setTokenStorageValue(session.access_token);
-				setGlobalHeaders({ Authorization: `Bearer ${session.access_token}` });
-			}
-
-			return response;
-		},
-		[setTokenStorageValue]
-	);
 
 	/**
 	 * Sign out
 	 */
-	const signOut: JwtAuthContextType['signOut'] = useCallback(() => {
-		removeTokenStorageValue();
-		removeGlobalHeaders(['Authorization']);
+	const signOut: JwtAuthContextType['signOut'] = useCallback(async () => {
+		await authLogout();
 		setAuthState({
 			authStatus: 'unauthenticated',
 			isAuthenticated: false,
 			user: null
 		});
-	}, [removeTokenStorageValue]);
+	}, []);
 
 	/**
 	 * Update user
@@ -189,13 +140,11 @@ function JwtAuthProvider(props: FuseAuthProviderComponentProps) {
 		() =>
 			({
 				...authState,
-				signIn,
-				signUp,
 				signOut,
 				updateUser,
 				refreshToken
 			}) as JwtAuthContextType,
-		[authState, signIn, signUp, signOut, updateUser, refreshToken]
+		[authState, signOut, updateUser, refreshToken]
 	);
 
 	/**
@@ -205,38 +154,6 @@ function JwtAuthProvider(props: FuseAuthProviderComponentProps) {
 		signOut,
 		updateUser
 	}));
-
-	/**
-	 * Intercept fetch requests to refresh the access token
-	 */
-	const interceptFetch = useCallback(() => {
-		const { fetch: originalFetch } = window;
-
-		window.fetch = async (...args) => {
-			const [resource, config] = args;
-			const response = await originalFetch(resource, config);
-			const newAccessToken = response.headers.get('New-Access-Token');
-
-			if (newAccessToken) {
-				setGlobalHeaders({ Authorization: `Bearer ${newAccessToken}` });
-				setTokenStorageValue(newAccessToken);
-			}
-
-			if (response.status === 401) {
-				signOut();
-
-				console.error('Unauthorized request. User was signed out.');
-			}
-
-			return response;
-		};
-	}, [setTokenStorageValue, signOut]);
-
-	useEffect(() => {
-		if (authState.isAuthenticated) {
-			interceptFetch();
-		}
-	}, [authState.isAuthenticated, interceptFetch]);
 
 	return <JwtAuthContext value={authContextValue}>{children}</JwtAuthContext>;
 }
