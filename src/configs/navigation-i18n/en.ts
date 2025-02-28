@@ -10,7 +10,9 @@ const locale = {
 	CONTACTS: 'Contacts',
 	MESSENGER: 'Messenger',
 	SCRUMBOARD: 'Scrumboard',
-	NOTES: 'Notes'
+	NOTES: 'Notes',
+	DIGITAL_PRINTABLES: 'Digital Printables',
+	PRODUCTS: 'Products'
 };
 
 export default locale;

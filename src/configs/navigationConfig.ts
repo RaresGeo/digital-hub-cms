@@ -14,6 +14,69 @@ i18n.addResourceBundle('ar', 'navigation', ar);
  */
 const navigationConfig: FuseNavItemType[] = [
 	{
+		id: 'products',
+		title: 'Products',
+		type: 'group',
+		icon: 'heroicons-outline:shopping-cart',
+		translate: 'PRODUCTS',
+		children: [
+			{
+				id: 'products.digital-printables',
+				title: 'Digital Printables',
+				type: 'collapse',
+				icon: 'feather:printer',
+				url: '/products/digital-printables',
+				children: [
+					{
+						id: 'digital-printables-products',
+						title: 'View all',
+						type: 'item',
+						url: '/products/digital-printables'
+					},
+					{
+						id: 'digital-printables-new-product',
+						title: 'New Product',
+						type: 'item',
+						url: '/products/digital-printables/new'
+					},
+					{
+						id: 'digital-printables-orders',
+						title: 'Orders',
+						type: 'item',
+						url: '/products/digital-printables/orders'
+					}
+				]
+			},
+			{
+				id: 'products.wedding-invitations',
+				title: 'Wedding Invitations',
+				type: 'collapse',
+				icon: 'feather:heart',
+				url: '/products/wedding-invitations',
+				children: [
+					{
+						id: 'wedding-invitations-products',
+						title: 'View all',
+						type: 'item',
+						url: '/products/wedding-invitations'
+					},
+					{
+						id: 'wedding-invitations-new-product',
+						title: 'New Product',
+						type: 'item',
+						url: '/products/wedding-invitations/new'
+					},
+					{
+						id: 'wedding-invitations-orders',
+						title: 'Orders',
+						type: 'item',
+						url: '/products/wedding-invitations/orders'
+					}
+				]
+			}
+		]
+	},
+	{
 		id: 'dashboards',
 		title: 'Dashboards',
 		subtitle: 'Unique dashboard designs',
