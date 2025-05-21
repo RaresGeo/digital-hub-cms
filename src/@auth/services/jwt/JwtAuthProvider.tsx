@@ -1,9 +1,8 @@
-import { useState, useEffect, useCallback, useMemo, useImperativeHandle } from 'react';
-import { FuseAuthProviderComponentProps, FuseAuthProviderState } from '@fuse/core/FuseAuthProvider/types/FuseAuthTypes';
 import { authGetProfile, authLogout, authRefreshToken, authUpdateDbUser } from '@auth/authApi';
+import JwtAuthContext, { JwtAuthContextType } from '@auth/services/jwt/JwtAuthContext';
+import { FuseAuthProviderComponentProps, FuseAuthProviderState } from '@fuse/core/FuseAuthProvider/types/FuseAuthTypes';
+import { useCallback, useEffect, useImperativeHandle, useMemo, useState } from 'react';
 import { User } from '../../user';
-import JwtAuthContext from '@auth/services/jwt/JwtAuthContext';
-import { JwtAuthContextType } from '@auth/services/jwt/JwtAuthContext';
 
 export type JwtSignInPayload = {
 	email: string;
@@ -45,10 +44,6 @@ function JwtAuthProvider(props: FuseAuthProviderComponentProps) {
 		isAuthenticated: false,
 		user: null
 	});
-
-	useEffect(() => {
-		console.debug(authState);
-	}, [authState]);
 
 	/**
 	 * Watch for changes in the auth state
@@ -132,6 +127,19 @@ function JwtAuthProvider(props: FuseAuthProviderComponentProps) {
 
 		return response;
 	}, []);
+
+	useEffect(() => {
+		// Periodically call the refresh endpoint
+		if (authState.isAuthenticated) {
+			const interval = setInterval(() => {
+				refreshToken().catch(() => {
+					signOut();
+				});
+			}, 1000 * 60); // 1 minute
+
+			return () => clearInterval(interval);
+		}
+	}, [authState.isAuthenticated, refreshToken, signOut]);
 
 	/**
 	 * Auth Context Value

@@ -76,7 +76,7 @@ function OrdersTable() {
 					},
 					pagination: {
 						pageIndex: 0,
-						pageSize: 20
+						pageSize: 5
 					}
 				}}
 				data={orders}

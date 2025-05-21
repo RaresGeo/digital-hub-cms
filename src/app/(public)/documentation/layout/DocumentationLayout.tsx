@@ -9,7 +9,6 @@ import FusePageSimple from '@fuse/core/FusePageSimple';
 import usePathname from '@fuse/hooks/usePathname';
 import { Button } from '@mui/material';
 import Link from '@fuse/core/Link';
-import PurchaseButton from 'src/components/theme-layouts/components/PurchaseButton';
 import PageBreadcrumb from 'src/components/PageBreadcrumb';
 import { Outlet } from 'react-router';
 import DocumentationNavigation from '../DocumentationNavigation';
@@ -65,7 +64,6 @@ function DocumentationLayout() {
 							/>
 						</div>
 						<div className="flex shrink justify-end items-center space-x-1">
-							<PurchaseButton size="small">Purchase</PurchaseButton>
 							<Button
 								className="whitespace-nowrap"
 								component={Link}

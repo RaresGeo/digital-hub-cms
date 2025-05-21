@@ -26,7 +26,6 @@ function Authentication(props: AuthenticationProps) {
 		<FuseAuthProvider providers={authProviders}>
 			{(authState) => {
 				const userRole = authState?.user?.role as User['role'];
-				console.log('~userRole', userRole);
 				return <FuseAuthorization userRole={userRole}>{children}</FuseAuthorization>;
 			}}
 		</FuseAuthProvider>

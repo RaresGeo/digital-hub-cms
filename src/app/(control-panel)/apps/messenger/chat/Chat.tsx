@@ -10,7 +10,6 @@ import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import Toolbar from '@mui/material/Toolbar';
 import { useParams } from 'react-router';
 import Box from '@mui/material/Box';
-import Error404Page from 'src/app/(public)/404/Error404Page';
 import ChatMoreMenu from './ChatMoreMenu';
 import {
 	Message,
@@ -173,7 +172,7 @@ function Chat(props: ChatProps) {
 
 	if (!user || !messages || !chat) {
 		return null;
-		return <Error404Page />;
+		// return <Error404Page />;
 	}
 
 	return (

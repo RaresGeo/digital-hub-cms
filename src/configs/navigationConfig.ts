@@ -25,25 +25,25 @@ const navigationConfig: FuseNavItemType[] = [
 				title: 'Digital Printables',
 				type: 'collapse',
 				icon: 'feather:printer',
-				url: '/products/digital-printables',
+				url: '/apps/digital-printables/products',
 				children: [
 					{
 						id: 'digital-printables-products',
 						title: 'View all',
 						type: 'item',
-						url: '/products/digital-printables'
+						url: '/apps/digital-printables/products'
 					},
 					{
 						id: 'digital-printables-new-product',
 						title: 'New Product',
 						type: 'item',
-						url: '/products/digital-printables/new'
+						url: '/apps/digital-printables/products/new'
 					},
 					{
 						id: 'digital-printables-orders',
 						title: 'Orders',
 						type: 'item',
-						url: '/products/digital-printables/orders'
+						url: '/apps/digital-printables/orders'
 					}
 				]
 			},
@@ -52,25 +52,25 @@ const navigationConfig: FuseNavItemType[] = [
 				title: 'Wedding Invitations',
 				type: 'collapse',
 				icon: 'feather:heart',
-				url: '/products/wedding-invitations',
+				url: '/apps/wedding-invitations/products',
 				children: [
 					{
 						id: 'wedding-invitations-products',
 						title: 'View all',
 						type: 'item',
-						url: '/products/wedding-invitations'
+						url: '/apps/wedding-invitations/products'
 					},
 					{
 						id: 'wedding-invitations-new-product',
 						title: 'New Product',
 						type: 'item',
-						url: '/products/wedding-invitations/new'
+						url: '/apps/wedding-invitations/products/new'
 					},
 					{
 						id: 'wedding-invitations-orders',
 						title: 'Orders',
 						type: 'item',
-						url: '/products/wedding-invitations/orders'
+						url: '/apps/wedding-invitations/orders'
 					}
 				]
 			}

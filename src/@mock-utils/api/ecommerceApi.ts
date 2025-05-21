@@ -9,7 +9,7 @@ const ecommerceApi = [
 		const api = mockApi('ecommerce_products');
 		const queryParams = Object.fromEntries(new URL(request.url).searchParams);
 		const items = await api.findAll(queryParams);
-		return HttpResponse.json(items);
+		return HttpResponse.json(items.map((item) => ({ ...item, variants: [] })));
 	}),
 
 	/**

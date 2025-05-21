@@ -8,7 +8,17 @@ type FuseSvgIconProps = BoxProps & {
 	xmlns?: string;
 	viewBox?: string;
 	size?: number | string;
-	color?: 'inherit' | 'disabled' | 'primary' | 'secondary' | 'action' | 'error' | 'info' | 'success' | 'warning';
+	color?:
+		| 'inherit'
+		| 'disabled'
+		| 'primary'
+		| 'secondary'
+		| 'action'
+		| 'error'
+		| 'info'
+		| 'success'
+		| 'warning'
+		| 'white';
 	ref?: React.RefObject<SVGSVGElement>;
 };
 
