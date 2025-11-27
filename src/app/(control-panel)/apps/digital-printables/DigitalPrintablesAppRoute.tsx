@@ -1,6 +1,6 @@
+import { FuseRouteItemType } from '@fuse/utils/FuseUtils';
 import { lazy } from 'react';
 import { Navigate } from 'react-router';
-import { FuseRouteItemType } from '@fuse/utils/FuseUtils';
 
 const DigitalPrintablesApp = lazy(() => import('./DigitalPrintablesApp'));
 const Product = lazy(() => import('./products/product/Product'));

@@ -1,19 +1,20 @@
-import useNavigate from '@fuse/hooks/useNavigate';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-import _ from 'lodash';
-import { motion } from 'motion/react';
-import { useFormContext } from 'react-hook-form';
-import { useParams } from 'react-router';
-import PageBreadcrumb from 'src/components/PageBreadcrumb';
+import useNavigate from "@fuse/hooks/useNavigate";
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
+import _ from "lodash";
+import { motion } from "motion/react";
+import { useFormContext } from "react-hook-form";
+import { useParams } from "react-router";
+import PageBreadcrumb from "src/components/PageBreadcrumb";
 import {
 	DigitalPrintableProduct,
 	useCreateDigitalPrintablesProductMutation,
 	useDeleteDigitalPrintablesProductMutation,
-	useUpdateDigitalPrintablesProductMutation
-} from '../../DigitalPrintablesApi';
-import { useState } from 'react';
-import { LoadingButton } from '@mui/lab';
+	useUpdateDigitalPrintablesProductMutation,
+} from "../../DigitalPrintablesApi";
+import { useEffect, useState } from "react";
+import { LoadingButton } from "@mui/lab";
+import { NEW_PRODUCT_PREFIX } from "../../orders/constants/helpers";
 
 /**
  * The product header.
@@ -33,17 +34,26 @@ function ProductHeader() {
 
 	const navigate = useNavigate();
 
-	const { title, thumbnailUrl, featuredImageId, variants } = watch() as DigitalPrintableProduct;
+	const { title, thumbnailUrl, featuredImageId, variants } =
+		watch() as DigitalPrintableProduct;
 
 	function handleSaveProduct() {
-		saveProduct(getValues() as DigitalPrintableProduct);
+		saveProduct(getValues() as DigitalPrintableProduct)
+			.unwrap()
+			.then(() => {
+				navigate(`/apps/digital-printables/products/`);
+				setLoading(false);
+			})
+			.catch(() => setLoading(false));
+
+		setLoading(true);
 	}
 
 	function handleCreateProduct() {
 		createProduct(getValues() as DigitalPrintableProduct)
 			.unwrap()
-			.then((data) => {
-				navigate(`/apps/digital-printables/products/${data.productId}`);
+			.then(() => {
+				navigate(`/apps/digital-printables/products/`);
 				setLoading(false);
 			})
 			.catch(() => setLoading(false));
@@ -53,7 +63,7 @@ function ProductHeader() {
 
 	function handleRemoveProduct() {
 		removeProduct(productId);
-		navigate('/apps/e-commerce/products');
+		navigate("/apps/e-commerce/products");
 	}
 
 	return (
@@ -62,12 +72,12 @@ function ProductHeader() {
 				<motion.div
 					initial={{
 						x: 20,
-						opacity: 0
+						opacity: 0,
 					}}
 					animate={{
 						x: 0,
 						opacity: 1,
-						transition: { delay: 0.3 }
+						transition: { delay: 0.3 },
 					}}
 				>
 					<PageBreadcrumb className="mb-2" />
@@ -86,7 +96,7 @@ function ProductHeader() {
 									.flatMap((variant) => variant.photos)
 									.find((photo) => photo.id === featuredImageId)?.url ||
 								thumbnailUrl ||
-								'/assets/images/apps/ecommerce/product-image-placeholder.png'
+								"/assets/images/apps/ecommerce/product-image-placeholder.png"
 							}
 							alt={title}
 						/>
@@ -97,12 +107,9 @@ function ProductHeader() {
 						animate={{ x: 0, transition: { delay: 0.3 } }}
 					>
 						<Typography className="text-lg sm:text-2xl truncate font-semibold">
-							{title || 'New Printable'}
+							{title || "New Printable"}
 						</Typography>
-						<Typography
-							variant="caption"
-							className="font-medium"
-						>
+						<Typography variant="caption" className="font-medium">
 							Product Detail
 						</Typography>
 					</motion.div>
@@ -113,7 +120,7 @@ function ProductHeader() {
 				initial={{ opacity: 0, x: 20 }}
 				animate={{ opacity: 1, x: 0, transition: { delay: 0.3 } }}
 			>
-				{productId !== 'new' ? (
+				{productId !== NEW_PRODUCT_PREFIX ? (
 					<>
 						{/* <Button
 							className="whitespace-nowrap mx-1"

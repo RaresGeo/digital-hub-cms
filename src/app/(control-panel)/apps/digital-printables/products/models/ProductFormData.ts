@@ -1,103 +1,161 @@
 /**
- * Transforms React Hook Form data into FormData for API submission with RTK Query
+ * Transforms React Hook Form data into FormData for API submission
  */
+import { DigitalPrintableProduct } from "../../DigitalPrintablesApi";
+import { ProductModel } from "./ProductModel";
 
-import { DigitalPrintableProduct } from '../../DigitalPrintablesApi';
-import { ProductModel } from './ProductModel';
-
-// This function can be used in your API slice to transform the payload before sending
-export const prepareFormDataForApi = (payload: DigitalPrintableProduct) => {
-	const formData = new FormData();
-
-	const productData = {
-		id: payload.id,
-		type: 'DIGITAL_PRINTABLE',
-		title: payload.title,
-		description: payload.description,
-		active: (payload.active ?? true).toString(),
-		featuredImageId: payload.featuredImageId,
-		tags: payload.tags,
-		variants: payload.variants.map((variant) => ({
-			id: variant.id,
-			title: variant.title,
-			price: variant.price,
-			sortOrder: variant.sortOrder,
-			active: variant.active,
-			photos: variant.photos.map((photo) => ({
-				id: photo.id,
-				sortOrder: photo.sortOrder
-			})),
-			digitalAsset: {
-				filename: variant.digitalAsset.name,
-				size: variant.digitalAsset.size
-			}
-			// metadata: variant.metadata
-		}))
-	};
-
-	// Add basic product data
-
-	// Handle variants
-	if (payload.variants && payload.variants.length > 0) {
-		payload.variants.forEach((variant) => {
-			// Handle photos
-			if (variant.photos && variant.photos.length > 0) {
-				variant.photos.forEach((photo) => {
-					// If the URL is a base64 string, convert to a file
-					if (photo.url && photo.url.startsWith('data:')) {
-						const file = base64ToFile(photo.url, `photo-${photo.id}`);
-						formData.append(`variant_photo_${variant.id}_${photo.id}`, file);
-					}
-					// If not, this likely means that the photo is already uploaded
-				});
-			} else {
-				throw new Error('At least one photo is required for each variant');
-			}
-
-			// Handle digital asset if available
-			if (variant.digitalAsset && variant.digitalAsset.file) {
-				// If it's a File object, append it directly
-				if (variant.digitalAsset.file instanceof File) {
-					formData.append(`variant_digital_asset_${variant.id}`, variant.digitalAsset.file);
-				}
-			}
-		});
-	} else {
-		throw new Error('At least one variant is required');
-	}
-
-	formData.append('productData', JSON.stringify(productData));
-
-	console.debug('~formData', JSON.stringify(productData, null, 2));
-
-	return formData;
-};
+const NEW_PRODUCT_PREFIX = "new-"; // Adjust this to match your actual prefix
 
 /**
  * Converts a base64 string to a File object
  */
 const base64ToFile = (base64String: string, filename: string): File => {
-	// Extract data URI parts
-	const arr = base64String.split(',');
-	const mime = arr[0].match(/:(.*?);/)?.[1] || 'image/jpeg';
+	const arr = base64String.split(",");
+	const mime = arr[0].match(/:(.*?);/)?.[1] || "image/jpeg";
 	const bstr = atob(arr[1]);
-
-	// Create array buffer
 	let n = bstr.length;
 	const u8arr = new Uint8Array(n);
 	while (n--) {
 		u8arr[n] = bstr.charCodeAt(n);
 	}
-
-	// Create File object
 	return new File([u8arr], filename, { type: mime });
 };
 
-// Modified ProductModel to handle FormData
-export const ProductModelWithFormData = (data: DigitalPrintableProduct) => {
-	// Apply defaults first
-	const productWithDefaults = ProductModel(data);
+/**
+ * Transforms data for both product creation and editing
+ */
+export const prepareFormDataForApi = (payload: DigitalPrintableProduct) => {
+	const formData = new FormData();
+	const isCreating = !payload.id ||
+		payload.id.startsWith(NEW_PRODUCT_PREFIX);
 
-	// Then transform to FormData
-	return prepareFormDataForApi(productWithDefaults as DigitalPrintableProduct);
+	console.log("~variants", payload.variants)
+	payload.variants.forEach(variant => {
+		console.log("~price is", variant.price, typeof variant.price)
+		console.log("~parseInt is", parseInt(variant.price.toString()), typeof parseInt(variant.price.toString()))
+		console.log("~parseInt \"\" is", parseInt(variant.price + ""))
+
+	});
+
+	const productData = {
+		...(isCreating
+			? { type: "DIGITAL_PRINTABLE" }
+			: { id: payload.id }),
+		title: payload.title,
+		description: payload.description,
+		active: payload.active ?? false,
+		featuredImageId: payload.featuredImageId,
+		tags: payload.tags,
+		variants: payload.variants.map((variant) => ({
+			id: variant.id,
+			title: variant.title,
+			price: parseInt(variant.price.toString()),
+			sortOrder: variant.sortOrder,
+			active: variant.active,
+			photos: variant.photos.map((photo) => ({
+				id: photo.id,
+				sortOrder: photo.sortOrder,
+			})),
+			// Only include digitalAsset if it's new (being uploaded)
+			...(variant.digitalAsset?.file &&
+				variant.digitalAsset.file instanceof
+				File
+				? {
+					digitalAsset: {
+						filename:
+							variant.digitalAsset
+								.file.name,
+						size: variant.digitalAsset.file
+							.size,
+					},
+				}
+				: {}),
+		})),
+	};
+
+	// Handle variants
+	if (!payload.variants || payload.variants.length === 0) {
+		throw new Error("At least one variant is required");
+	}
+
+	payload.variants.forEach((variant) => {
+		// Handle photos - only upload if photo ID starts with NEW_PRODUCT_PREFIX
+		if (!variant.photos || variant.photos.length === 0) {
+			throw new Error(
+				"At least one photo is required for each variant",
+			);
+		}
+
+		variant.photos.forEach((photo) => {
+			if (photo.id.startsWith(NEW_PRODUCT_PREFIX)) {
+				if (
+					!photo.url ||
+					!photo.url.startsWith("data:")
+				) {
+					throw new Error(
+						"Missing base64 data for new photo",
+					);
+				}
+
+				const file = base64ToFile(
+					photo.url,
+					`photo-${photo.id}`,
+				);
+				formData.append(
+					`variant_photo_${variant.id}_${photo.id}`,
+					file,
+				);
+				console.log(
+					"~appended to ",
+					`variant_photo_${variant.id}_${photo.id}`,
+				);
+			} else {
+				console.log(photo.id);
+			}
+		});
+
+		console.log(
+			"~variant digital asset",
+			variant.digitalAsset,
+			!!variant.digitalAsset?.file,
+			variant.digitalAsset.file instanceof File,
+			variant.digitalAsset?.file &&
+			variant.digitalAsset.file instanceof File,
+		);
+
+		// Handle digital asset - only upload if it's new
+		if (
+			variant.digitalAsset?.file &&
+			variant.digitalAsset.file instanceof File
+		) {
+			console.log("~hello? why aren't we doing this?");
+			formData.append(
+				`variant_digital_asset_${variant.id}`,
+				variant.digitalAsset.file,
+			);
+		} else if (
+			variant.id.startsWith(NEW_PRODUCT_PREFIX) || isCreating
+		) {
+			// So if there isn't a digital asset file
+			// But the variant is new
+
+			throw new Error(
+				"Missing digital asset for new variant",
+			);
+		}
+	});
+
+	formData.append("productData", JSON.stringify(productData));
+	console.debug("~formData", JSON.stringify(productData, null, 2));
+	return formData;
+};
+
+/**
+ * Modified ProductModel to handle FormData
+ */
+export const ProductModelWithFormData = (data: DigitalPrintableProduct) => {
+	const productWithDefaults = ProductModel(data);
+	return prepareFormDataForApi(
+		productWithDefaults as DigitalPrintableProduct,
+	);
 };

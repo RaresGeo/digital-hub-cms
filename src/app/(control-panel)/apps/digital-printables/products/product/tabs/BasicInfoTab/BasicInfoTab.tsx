@@ -3,6 +3,7 @@ import Autocomplete from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
 import { Controller, useFormContext } from 'react-hook-form';
 import ReorderVariants from './ReorderVariants';
+import { useEffect } from 'react';
 
 /**
  * The basic info tab.
@@ -11,6 +12,10 @@ function BasicInfoTab() {
 	const methods = useFormContext();
 	const { control, formState } = methods;
 	const { errors } = formState;
+
+	useEffect(() => {
+		console.log("~formState", formState)
+	}, [formState])
 
 	return (
 		<div>

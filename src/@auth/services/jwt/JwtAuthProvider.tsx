@@ -3,6 +3,7 @@ import JwtAuthContext, { JwtAuthContextType } from '@auth/services/jwt/JwtAuthCo
 import { FuseAuthProviderComponentProps, FuseAuthProviderState } from '@fuse/core/FuseAuthProvider/types/FuseAuthTypes';
 import { useCallback, useEffect, useImperativeHandle, useMemo, useState } from 'react';
 import { User } from '../../user';
+import { UserProfile } from '@/api-schemas';
 
 export type JwtSignInPayload = {
 	email: string;
@@ -15,21 +16,14 @@ export type JwtSignUpPayload = {
 	password: string;
 };
 
-interface BackendUser {
-	email: string;
-	name: string;
-	picture: string;
-	isAdmin: boolean;
-	googleId: string;
-}
 
-function mapBackendUserToUser(backendUser: BackendUser): User {
+function mapUserResponseToUser(res: UserProfile): User {
 	return {
-		id: backendUser.googleId,
-		role: backendUser.isAdmin ? 'admin' : null,
-		displayName: backendUser.name,
-		photoURL: backendUser.picture,
-		email: backendUser.email
+		id: res.googleId,
+		role: res.isAdmin ? 'admin' : null,
+		displayName: res.name,
+		photoURL: res.picture,
+		email: res.email
 	};
 }
 
@@ -67,8 +61,10 @@ function JwtAuthProvider(props: FuseAuthProviderComponentProps) {
 					throw new Error(`HTTP error! status: ${response.status}`);
 				}
 
-				const userData = (await response.json()) as BackendUser;
-				return mapBackendUserToUser(userData);
+				const userData = (await response.json()) as UserProfile;
+				console.debug(userData)
+				console.debug(mapUserResponseToUser(userData))
+				return mapUserResponseToUser(userData);
 			} catch {
 				return false;
 			}

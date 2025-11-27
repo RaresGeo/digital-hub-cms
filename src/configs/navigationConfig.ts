@@ -1,9 +1,9 @@
-import i18n from '@i18n';
 import { FuseNavItemType } from '@fuse/core/FuseNavigation/types/FuseNavItemType';
+import i18n from '@i18n';
+import SettingsAppNavigation from '../app/(control-panel)/apps/settings/SettingsAppNavigation';
 import ar from './navigation-i18n/ar';
 import en from './navigation-i18n/en';
 import tr from './navigation-i18n/tr';
-import SettingsAppNavigation from '../app/(control-panel)/apps/settings/SettingsAppNavigation';
 
 i18n.addResourceBundle('en', 'navigation', en);
 i18n.addResourceBundle('tr', 'navigation', tr);
@@ -44,6 +44,12 @@ const navigationConfig: FuseNavItemType[] = [
 						title: 'Orders',
 						type: 'item',
 						url: '/apps/digital-printables/orders'
+					},
+					{
+						id: 'digital-printables-reviews',
+						title: 'Reviews',
+						type: 'item',
+						url: '/apps/digital-printables/reviews'
 					}
 				]
 			},
